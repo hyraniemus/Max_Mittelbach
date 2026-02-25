@@ -826,7 +826,7 @@
   <!-- LOADING SCREEN -->
   <div class="loader" id="loader">
     <div class="loader__text">
-      <span>Antigravity</span>
+      <span>Max Mittelbach</span>
     </div>
   </div>
 
@@ -849,6 +849,8 @@
         src="media/portrait.jpg"
         alt="Max Mittelbach"
         loading="eager"
+        fetchpriority="high"
+        decoding="async"
       >
     </div>
 
@@ -910,7 +912,7 @@
   <section>
     <div class="index">
       <div class="index__header reveal">
-        <span class="index__label">( Antigravity R&amp;D Index )</span>
+        <span class="index__label">( R&amp;D Index )</span>
         <span class="index__count">003 Entries</span>
       </div>
 
@@ -1048,7 +1050,7 @@
 
     <div class="footer__bottom">
       <span>&copy; 2026 Max Mittelbach</span>
-      <span>Built by Antigravity</span>
+      <span>Portfolio 2026</span>
     </div>
   </footer>
 
@@ -1250,6 +1252,14 @@
           revealHero();
         }, 800);
       }
+
+      // Extra fallback for mobile browsers that may miss load event
+      setTimeout(() => {
+        if (!loader.classList.contains('is-done')) {
+          loader.classList.add('is-done');
+          revealHero();
+        }
+      }, 4000);
 
       /* ------------------------------------------------
          PARALLAX (subtle background shift on scroll)
